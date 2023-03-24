@@ -20,13 +20,16 @@ class Categories extends Model
         return $this->hasMany(Post::class, 'categories_id', 'id');
     }
 
-    public function children()
+    public function Categories()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(categories::class, 'parent_id', 'id');
+    }
+    
+    public function childrenCategories()
+    {
+        return $this->hasMany(categories::class)->with('Categories');
     }
 
-    public function parent()
-    {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }   
+    
+
 }
