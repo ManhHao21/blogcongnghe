@@ -27,14 +27,15 @@ class CategoryController extends Controller
             'name.required' => 'Không được để trống khi thêm danh mục'
          ]);
 
-        $slug = Str::slug($request->name);
+        $slug = Str::slug($request->title);
             $checkSlug = Categories::where('slug', $slug)->first();
         while($checkSlug){
             $slug = $checkSlug->slug . Str::random(2);
         }
         Categories::create([
             'name' =>$request->name,
-            'slug' => Str::slug($request->name)
+            'slug' => Str::slug($request->name),
+            'parent_id' =>$request->parent_id
         ]);
         return redirect()->route('admin.category.index')->with('msg', 'tạo danh mục thành công');
     }
@@ -61,7 +62,8 @@ class CategoryController extends Controller
         $category = Categories::find($id);
         $category->update([
             'name' =>$request->name,
-            'slug' => $slug
+            'slug' => $slug,
+            'parent_id' =>$request->parent_id
         ]);
       
         return redirect()->route('admin.category.edit', $id)->with('msg', 'cập nhật danh mục thành công');

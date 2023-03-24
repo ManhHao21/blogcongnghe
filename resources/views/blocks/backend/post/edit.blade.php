@@ -24,7 +24,7 @@
     @endif
     <div class="card-body">
         <div class="form-group">
-            <label>Category Parent</label>
+            <label>Category</label>
             <select class="form-control" name = "category_id">
                 @foreach($category as $item)
                 <option value="{{$item->id}}" @if($post->categories_id == $item->id) selected @endif>{{$item->name}}</option>
@@ -54,7 +54,8 @@
       </div>
       <div class="form-group">
         <label for="content">Content</label>
-        <textarea name="content" id="content" cols="30" rows="10" value = "{!! $post->content !!}"></textarea>
+        <textarea name="content" id="content" cols="30" rows="10" value = "{!!
+        $post->content!!}"></textarea>
       </div>
     </div>
 

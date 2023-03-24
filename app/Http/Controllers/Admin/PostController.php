@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -38,11 +39,11 @@ class PostController extends Controller
             'category_id.required' => 'danh mục không được để trống',
          ]);
 
-        // $slug = Str::slug($request->name);
-        // $checkSlug = Post::where('slug', $slug)->first();
-        // while($checkSlug){
-        //     $slug = $checkSlug->slug . Str::random(2);
-        // }
+        $slug = Str::slug($request->title);
+        $checkSlug = Post::where('slug', $slug)->first();
+        while($checkSlug){
+            $slug = $checkSlug->slug . Str::random(2);
+        }
 
         if($request->hasFile('image')){
             $file = $request->file('image');
@@ -59,19 +60,19 @@ class PostController extends Controller
                 $file->move('image/post', $image);
             }
         }
-        Post::create([
+            Post::create([
             'title' =>$request->title,
-        'description' =>$request->description,
-        'content'  =>$request->content,
-        'image'  =>$image,
-        'view_counts'  =>0,
-        'users_id'  => 1,
-        'new_post'  =>$request->new_post ?  1 :0,
-        // 'slug'  =>$slug,
-        'categories_id'  =>$request->category_id,
-        'highlight_post' =>$request->highlight_post?
-         1 : 0,
-        ]);
+            'description' =>$request->description,
+            'content'  =>$request->content,
+            'image'  =>$image,
+            'view_counts'  =>0,
+            'users_id'  => Auth::id(),
+            'new_post'  =>$request->new_post ?  1 :0,
+             'slug'  =>$slug,
+            'categories_id'  =>$request->category_id,
+            'highlight_post' =>$request->highlight_post?
+            1 : 0,
+            ]);
         return redirect()->route('admin.post.index')->with('msg', 'bài viết thành công thành công');
     }
 
@@ -98,11 +99,11 @@ class PostController extends Controller
            'category_id.required' => 'danh mục không được để trống',
         ]);
 
-    //    $slug = Str::slug($request->name);
-    //    $checkSlug = Post::where('slug', $slug)->first();
-    //    if($checkSlug){
-    //        $slug = $checkSlug->slug . Str::random(2);
-    //    }
+       $slug = Str::slug($request->title);
+       $checkSlug = Post::where('slug', $slug)->first();
+       if($checkSlug){
+           $slug = $checkSlug->slug . Str::random(2);
+       }
 
        if($request->hasFile('image')){
            $file = $request->file('image');
@@ -126,7 +127,7 @@ class PostController extends Controller
         'content'  =>$request->content,
         'image'  => isset($image) ? $image : $post->image,
         'new_post'  =>$request->new_post ?1 :0,
-        // 'slug'  =>$slug,
+         'slug'  =>$slug,
         'categories_id'  =>$request->category_id,
         'highlight_post' =>$request->highlight_post ? 1 : 0,
        ]);

@@ -3,6 +3,12 @@
 @section('head')
   
 @endsection
+@section('danhsach')
+    Danh sách danh mục
+@endsection
+@section('title')
+    Danh mục
+@endsection
 @section('content')
 <div class="card mb-4">
    
@@ -20,6 +26,7 @@
                 <tr>
                     <th>STT</th>
                     <th>tên Danh mục</th>
+                    <th>Danh mục cha</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,6 +35,7 @@
                 <tr>
                     <td>{{$key+1}}</td>
                     <td>{{$item->name}}</td>
+                    <td>{{$item->parent_id}}</td>
                     <td>
                         <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" href="{{route('admin.category.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
                        <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-danger btn-sm">sửa</a>

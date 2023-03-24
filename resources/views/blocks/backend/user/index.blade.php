@@ -5,7 +5,13 @@
 @endsection
 @section('content')
 <div class="card mb-4">
-   
+@section('danhsach')
+    Danh sách người dùng
+@endsection
+
+@section('title')
+    Trang người dùng
+@endsection
 </div>
 <div class="card mb-4">
     <div class="card-body">

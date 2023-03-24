@@ -24,6 +24,10 @@
         <label for="category">Tên Danh Mục</label>
         <input type="text" name="name" class="form-control" id="category" value="{{$category->name}}" placeholder="Nhập tên danh mục" value="">
       </div>
+      <div class="form-group col-3">
+        <label for="parent_id">Danh mục cha</label>
+        <input type="text" name="parent_id" class="form-control" id="parent_id" value="{{$category->parent_id}}" placeholder="Nhập danh mục cha" value="">
+      </div>
     </div>
 
       <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>

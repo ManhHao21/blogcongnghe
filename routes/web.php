@@ -7,17 +7,26 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\homeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [Controller::class, 'index']);
+Route::get('/', [WebController::class, 'index']);
+Route::get('/category', [WebController::class, 'category'])->name('category');
+Route::get('/category/{id}', [WebController::class, 'category'])->name('category');
+Route::get('/post/{id}', [WebController::class, 'post'])->name('post');
+Route::get('/contact', [WebController::class, 'contact']);
+Route::post('/contact', [WebController::class, 'sendContact']);
+
+
+
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'checkLogin'])->name('check-login');
 });
 
-
-Route::prefix('admin')->middleware('admin.login')->name('admin.')->group(function(){
+// ->middleware('admin.login')
+Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [homeController::class, 'index'])->name('index');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 

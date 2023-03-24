@@ -3,7 +3,13 @@
 @section('head')
   
 @endsection
+@section('danhsach')
+    Danh sách liên hệ
+@endsection
 @section('content')
+@section('title')
+    Liên hệ
+@endsection
 <div class="card mb-4">
    
 </div>

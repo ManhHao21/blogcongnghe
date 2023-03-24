@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Login - SB Admin</title>
+        <title>Đăng nhập</title>
         <link href="{{asset('backend/css/styles.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -28,7 +28,7 @@
                                         {{session('msg')}}
                                     </div>
                                 @endif
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
                                     <div class="card-body">
                                         <form action="{{route('admin.check-login')}}" method="POST">
                                             @csrf
@@ -41,10 +41,10 @@
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                            
-                                            {{-- <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="btn btn-primary">Login</a>
-                                            </div> --}}
-                                            <input type="submit" value="login">
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </div>
+
                                         </form>
                                     </div>          
                                 </div>

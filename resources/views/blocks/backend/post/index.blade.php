@@ -4,6 +4,12 @@
   
 @endsection
 @section('content')
+@section('danhsach')
+    Danh sách bài viết
+@endsection
+@section('title')
+    Trang bài viết
+@endsection
 <div class="card mb-4">
    
 </div>
