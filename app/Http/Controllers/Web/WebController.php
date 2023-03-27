@@ -13,6 +13,7 @@ class WebController extends Controller
          $category = Categories::all();
         $hightlight = Post::where('highlight_post', 1)->take(5)->get();
         $new = Post::where('new_post', 1) ->take(10)->get();
+        // return $new;
         // dd($categories);
         return view('index', compact('hightlight', 'new', 'categories'));
     }
