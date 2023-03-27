@@ -15,7 +15,7 @@
 </div>
 <div class="card mb-4">
     <div class="card-body">
-        <button type="button" class="btn btn-block btn-primary ml-3;"><a href="{{route('admin.category.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
+        <button type="button" class="btn btn-block btn-primary ml-3 mb-3"><a href="{{route('admin.category.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
         @if(session('msg'))
         <div class="alert alert-success">
             {{session('msg')}}

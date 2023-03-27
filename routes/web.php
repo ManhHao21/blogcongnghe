@@ -11,7 +11,7 @@ use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [WebController::class, 'index']);
+Route::get('/', [WebController::class, 'index'])->name('index');
 Route::get('/category', [WebController::class, 'category'])->name('category');
 Route::get('/category/{id}', [WebController::class, 'category'])->name('category');
 Route::get('/post/{id}', [WebController::class, 'post'])->name('post');
@@ -25,8 +25,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('login', [AuthController::class, 'checkLogin'])->name('check-login');
 });
 
-// ->middleware('admin.login')
-Route::prefix('admin')->name('admin.')->group(function(){
+
+Route::prefix('admin')->middleware('admin.login')->name('admin.')->group(function(){
     Route::get('/', [homeController::class, 'index'])->name('index');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 

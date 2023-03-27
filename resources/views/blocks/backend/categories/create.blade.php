@@ -18,12 +18,15 @@
         <label for="menu">Tên Danh Mục</label>
         <input type="text" name="name" class="form-control" id="menu" placeholder="Nhập tên danh mục" value="">
       </div>
-      <div class="form-group col-3">
-        <label for="parent_id">Danh mục cha</label>
-        <input type="text" name="parent_id" class="form-control" id="menu" placeholder="Nhập  danh mục cha" value="">
+      <div class="form-group">
+        <label>Category Parent</label>
+        <select class="form-control" name="parent_id">
+          <option value="">Parent</option>
+              {!! $htmlOption !!}
+        </select>
       </div>
-    </div>
-
+  </div>
       <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection

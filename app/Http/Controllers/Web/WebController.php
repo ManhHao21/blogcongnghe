@@ -9,11 +9,12 @@ use DB;
 class WebController extends Controller
 {
     public function index(){
-        // $categories = Categories::whereNull('parent_id')->get();
-        $category = Categories::all();
+         $categories = Categories::whereNULL('parent_id')->get();
+         $category = Categories::all();
         $hightlight = Post::where('highlight_post', 1)->take(5)->get();
         $new = Post::where('new_post', 1) ->take(10)->get();
-        return view('index', compact('hightlight', 'new', 'category'));
+        // dd($categories);
+        return view('index', compact('hightlight', 'new', 'categories'));
     }
 
     public function category($id){

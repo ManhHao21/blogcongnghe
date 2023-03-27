@@ -23,14 +23,13 @@
   </div>
     @endif
     <div class="card-body">
-        <div class="form-group">
-            <label>Category</label>
-            <select class="form-control" name = "category_id">
-                @foreach($category as $item)
-                <option value="{{$item->id}}" @if($post->categories_id == $item->id) selected @endif>{{$item->name}}</option>
-                @endforeach
-            </select>
-        </div>
+      <div class="form-group">
+        <label>Category Parent</label>
+        <select class="form-control mb-3" name="parent_id">
+          <option value="">Parent</option>
+              {!! $htmlOption !!}
+        </select>
+      </div>
       <div class="form-group">
         <label for="tilte">tilte</label>
         <input type="text" name="title" class="form-control" id="tilte" placeholder="Nhập tiêu đề" value="{{$post->title}}">
@@ -60,6 +59,6 @@
     </div>
 
       <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>
-      <button type="submit" class="btn btn-primary"><a href="{{route('admin.post.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection

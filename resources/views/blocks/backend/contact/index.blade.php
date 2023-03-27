@@ -43,6 +43,7 @@
                     <td>{{$item->message}}</td>
                     <td>
                         <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" href="{{route('admin.contact.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
+                        <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
                     </td> 
                 </tr> 
                 @endforeach

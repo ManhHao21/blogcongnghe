@@ -11,10 +11,21 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+ 
     public function index(){
         $posts = Post::paginate(20);
           return view('blocks.backend.post.index',compact('posts'));
     }
+    // function categoryRecusive($id, $text = '') {
+    //     $categories = Categories::all();
+    //     foreach ($categories as $value) {
+    //         if ($value['parent_id'] == $id) {
+    //             $this->htmlSelect .= "<option>" . $text . $value['name'] . "</option>";
+    //             $this->categoryRecusive($value['id'], $text . '--');
+    //         }
+    //     }
+    //     return $this->htmlSelect;
+    // }
 
     public function create(){
         $categories = Categories::all();
