@@ -34,7 +34,7 @@ class CategoryController extends Controller
             'name.required' => 'Không được để trống khi thêm danh mục'
          ]);
 
-        $slug = Str::slug($request->title);
+        $slug = Str::slug($request->name);
             $checkSlug = Categories::where('slug', $slug)->first();
         while($checkSlug){
             $slug = $checkSlug->slug . Str::random(2);
@@ -71,7 +71,7 @@ class CategoryController extends Controller
             'name.required' => 'Không được để trống khi thêm danh mục'
          ]);
 
-        $slug = Str::slug($request->title);
+        $slug = Str::slug($request->name);
             $checkSlug = Categories::where('slug', $slug)->first();
         while($checkSlug){
             $slug = $checkSlug->slug . Str::random(2);

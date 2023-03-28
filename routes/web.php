@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\homeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\web\AuthController as WebAuthController;
 use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ Route::get('/category/{id}', [WebController::class, 'category'])->name('category
 Route::get('/post/{id}', [WebController::class, 'post'])->name('post');
 Route::get('/contact', [WebController::class, 'contact']);
 Route::post('/contact', [WebController::class, 'sendContact']);
+Route::get('login', [WebAuthController::class, 'formLogin'])->name('Auth.index');
+Route::post('login', [WebAuthController::class, 'login'])->name('Auth.login');
+Route::get('logout', [WebAuthController::class, 'logout'])->name('Auth.logout');
 
 
 

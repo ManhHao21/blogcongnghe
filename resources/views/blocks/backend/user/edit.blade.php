@@ -1,7 +1,9 @@
 
 @extends('layouts.backend');
 @section('head')
-  
+@section('danhsach')
+cập nhật người dùng
+@endsection
 @endsection
 @section('content')
         @if(session('msg'))

@@ -1,7 +1,9 @@
 
 @extends('layouts.backend');
 @section('head')
-  
+@section('danhsach')
+Tạo danh mục
+@endsection
 @endsection
 @section('content')
 <form action="{{route('admin.category.store')}}" method="post">
@@ -14,12 +16,12 @@
   </div>
     @endif
     <div class="card-body">
-      <div class="form-group col-3">
+      <div class="form-group">
         <label for="menu">Tên Danh Mục</label>
         <input type="text" name="name" class="form-control" id="menu" placeholder="Nhập tên danh mục" value="">
       </div>
       <div class="form-group">
-        <label>Category Parent</label>
+        <label>Danh mục cha</label>
         <select class="form-control" name="parent_id">
           <option value="">Parent</option>
               {!! $htmlOption !!}

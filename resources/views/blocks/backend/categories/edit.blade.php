@@ -1,7 +1,9 @@
 
 @extends('layouts.backend');
 @section('head')
-  
+@section('danhsach')
+Cập nhật danh mục
+@endsection
 @endsection
 @section('content')
 @if(session('msg'))
@@ -27,7 +29,10 @@
           <label>Category Parent</label>
           <select class="form-control mb-3" name="parent_id">
             <option value="">Parent</option>
-                {!! $htmlOption !!}
+                  {!! $htmlOption !!}
+            </select>
+           
+                
           </select>
         </div>
 

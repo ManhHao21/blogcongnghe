@@ -1,7 +1,9 @@
 
 @extends('layouts.backend');
 @section('head')
-  
+@section('danhsach')
+Thêm người dùng
+@endsection
 @endsection
 @section('content')
 <form action="{{route('admin.user.store')}}" method="post" enctype="multipart/form-data">

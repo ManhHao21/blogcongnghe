@@ -24,11 +24,11 @@
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>STT</th>
-                    <th>name</th>
-                    <th>email</th>
-                    <th>Is Admin</th>
-                    <th></th>
+                    <th width = '5%'>STT</th>
+                    <th width = '20%'>name</th>
+                    <th width = '20%'>email</th>
+                    <th width = '5%'>Is Admin</th>
+                    <th  width = '15%'></th>
                 </tr>
             </thead>
             <tbody>
