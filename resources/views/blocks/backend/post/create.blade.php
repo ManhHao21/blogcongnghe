@@ -1,29 +1,29 @@
 
 @extends('layouts.backend');
-@section('head')
-  
+@section('danhsach')
+    Tạo bài viết
 @endsection
 @section('content')
 <form action="{{route('admin.post.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     @if(count($errors))
-    <div class="alert alert-danger">
-      @foreach($errors->all() as $err)
-      {{$err}} <br>
-      @endforeach
-  </div>
+      <div class="alert alert-danger ml-5 mt-5">
+        @foreach($errors->all() as $err)
+        {{$err}} <br>
+        @endforeach
+      </div>
     @endif
     <div class="card-body">
         <div class="form-group">
-            <label>Category Parent</label>
-            <select class="form-control" name = "category_id">
+            <label>Danh mục</label>
+            <select class="form-control" name = "id">
                 @foreach($categories as $item)
                 <option value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
             </select>
         </div>
       <div class="form-group">
-        <label for="tilte">tilte</label>
+        <label for="tilte">Tiêu đề</label>
         <input type="text" name="title" class="form-control" id="tilte" placeholder="Nhập tiêu đề" value="">
       </div>
       <div class="form-group">
@@ -31,20 +31,22 @@
         <input type="text" name="description" class="form-control" id="description" placeholder="Nhập description" value="">
       </div>
 
-      <div class="form-group">
-        <label for="new_post">New Post</label>
-        <input type="checkbox" name="new_post" id="new_post" >
+      <div class="form-group form-switch">
+         <input class="form-check-input" name = "new_post" type="checkbox" id="flexSwitchCheckDefault" checked> 
+         <label for="new_post">Bài viết mới</label>
+        <br>
+        <input class="form-check-input" type="checkbox" name="highlight_post" id="flexSwitchCheckDefault" checked>  
+        <label for="Highlight_Post">Bài viết hay</label>
+        <br>
+        <input class="form-check-input" type="checkbox" name="slide_post" id="flexSwitchCheckDefault" checked>  
+        <label for="slide_post">Bài viết slide</label>
       </div>
       <div class="form-group">
-        <label for="Highlight_Post">Highlight Post</label>
-        <input type="checkbox" name="highlight_post" id="Highlight_Post"  >
-      </div>
-      <div class="form-group">
-        <label for="Image">Image</label>
+        <label for="Image">Hình ảnh</label>
         <input type="file" name="image" class="form-control" id="Image" accept="image/*">
       </div>
       <div class="form-group">
-        <label for="content">Content</label>
+        <label for="content">Nội dung</label>
         <textarea name="content" id="content" cols="30" rows="10"></textarea>
       </div>
     </div>
@@ -53,3 +55,13 @@
       <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection
+
+<style>
+  span {
+    font-weight: bold;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+</style>

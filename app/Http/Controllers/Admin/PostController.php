@@ -16,16 +16,7 @@ class PostController extends Controller
         $posts = Post::paginate(20);
           return view('blocks.backend.post.index',compact('posts'));
     }
-    // function categoryRecusive($id, $text = '') {
-    //     $categories = Categories::all();
-    //     foreach ($categories as $value) {
-    //         if ($value['parent_id'] == $id) {
-    //             $this->htmlSelect .= "<option>" . $text . $value['name'] . "</option>";
-    //             $this->categoryRecusive($value['id'], $text . '--');
-    //         }
-    //     }
-    //     return $this->htmlSelect;
-    // }
+   
 
     public function create(){
         $categories = Categories::all();
@@ -33,21 +24,21 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        // dd($request);
+        //  dd($request);
         $this->validate($request,
          [
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
             'image' => 'required',
-            'category_id' => 'required',
+            'id' => 'required',
          ], 
          [
             'title.required' => 'Tiêu đề không được để trống',
             'description.required' => 'description không được để trống',
             'content.required' => 'content không được để trống',
             'image.required' => 'hình ảnh không được để trống',
-            'category_id.required' => 'danh mục không được để trống',
+            'id.required' => 'danh mục không được để trống',
          ]);
 
         $slug = Str::slug($request->title);
@@ -78,36 +69,37 @@ class PostController extends Controller
             'image'  =>$image,
             'view_counts'  =>0,
             'users_id'  => Auth::id(),
-            'new_post'  =>$request->new_post ?  1 :0,
+            'new_post'  =>$request->has('new_post') ?1 :0,
              'slug'  =>$slug,
-            'categories_id'  =>$request->category_id,
-            'highlight_post' =>$request->highlight_post?
-            1 : 0,
+            'categories_id'  =>$request->id,
+            'highlight_post' =>$request->has('highlight_post') ? 1 : 0,
+            'slide_post' =>$request->has('slide_post') ? 1 : 0,
             ]);
-        return redirect()->route('admin.post.index')->with('msg', 'bài viết thành công thành công');
+        return redirect()->route('admin.post.index')->with('msg', 'bài viết thành công');
     }
 
     public function edit($id){
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $category = Categories::all();
         return view('blocks.backend.post.edit',compact('post', 'category'));
     }
 
     public function update(Request $request, $id){
+        // dd($request);
         $this->validate($request,
         [
            'title' => 'required',
            'description' => 'required',
            'content' => 'required',
         //    'image' => 'required',
-           'category_id' => 'required',
+           'id' => 'required',
         ], 
         [
            'title.required' => 'Tiêu đề không được để trống',
            'description.required' => 'description không được để trống',
            'content.required' => 'content không được để trống',
         //    'image.required' => 'hình ảnh không được để trống',
-           'category_id.required' => 'danh mục không được để trống',
+           'id.required' => 'danh mục không được để trống',
         ]);
 
        $slug = Str::slug($request->title);
@@ -137,13 +129,13 @@ class PostController extends Controller
         'description' =>$request->description,
         'content'  =>$request->content,
         'image'  => isset($image) ? $image : $post->image,
-        'new_post'  =>$request->new_post ?1 :0,
+        'new_post'  =>$request->has('new_post') ?1 :0,
          'slug'  =>$slug,
-        'categories_id'  =>$request->category_id,
-        'highlight_post' =>$request->highlight_post ? 1 : 0,
+        'categories_id'  =>$request->id,
+        'highlight_post' =>$request->has('highlight_post') ? 1 : 0,
        ]);
        
-       return redirect()->route('admin.post.index', $id)->with('msg', 'cập nhật bài viết thành công thành công');
+       return redirect()->route('admin.post.index', $id)->with('msg', 'cập nhật bài viết thành công');
     }
 
     public function delete($id){

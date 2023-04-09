@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('slug');
             $table->unsignedBigInteger('categories_id');
             $table->boolean('highlight_post');
+            $table->boolean('slide_post');
             $table->timestamps();
             $table->foreign('users_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreign('categories_id')->references('id')->on('categories')->cascadeOnDelete();

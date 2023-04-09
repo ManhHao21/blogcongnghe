@@ -13,11 +13,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [WebController::class, 'index'])->name('index');
+
 Route::get('/category', [WebController::class, 'category'])->name('category');
 Route::get('/category/{id}', [WebController::class, 'category'])->name('category');
-Route::get('/post/{id}', [WebController::class, 'post'])->name('post');
-Route::get('/contact', [WebController::class, 'contact']);
-Route::post('/contact', [WebController::class, 'sendContact']);
+
+Route::get('/post/{slug}', [WebController::class, 'post'])->name('post');
+Route::post('/post/comment/{id}', [WebController::class, 'comment'])->name('web.post.comment');
+
+
+Route::get('/contact', [WebController::class, 'contact'])->name('contact.index');
+Route::post('contact', [WebController::class, 'sendContact'])->name('web.contact.send');
+
 Route::get('login', [WebAuthController::class, 'formLogin'])->name('Auth.index');
 Route::post('login', [WebAuthController::class, 'login'])->name('Auth.login');
 Route::get('logout', [WebAuthController::class, 'logout'])->name('Auth.logout');
@@ -29,8 +35,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::post('login', [AuthController::class, 'checkLogin'])->name('check-login');
 });
 
-
-Route::prefix('admin')->middleware('admin.login')->name('admin.')->group(function(){
+// ->middleware('admin.login')
+Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [homeController::class, 'index'])->name('index');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -66,6 +72,13 @@ Route::prefix('admin')->middleware('admin.login')->name('admin.')->group(functio
         Route::prefix('contact')->name('contact.')->group(function(){
             Route::get('', [ContactController::class, 'index'])->name('index');
             Route::get('delete/{id}', [ContactController::class, 'delete'])-> name('delete');
+            Route::get('show/{id}', [ContactController::class, 'show'])-> name('show');
+            Route::post('show/{id}', [ContactController::class, 'postShow'])-> name('postShow');
+        });
+
+        Route::prefix('comment')->name('comment.')->group(function(){
+            Route::get('', [CommentController::class, 'index'])->name('index');
+            Route::get('delete/{id}', [CommentController::class, 'delete'])-> name('delete');
         });
 
 

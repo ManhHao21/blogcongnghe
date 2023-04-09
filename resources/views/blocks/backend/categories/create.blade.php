@@ -24,7 +24,13 @@ Tạo danh mục
         <label>Danh mục cha</label>
         <select class="form-control" name="parent_id">
           <option value="">Parent</option>
-              {!! $htmlOption !!}
+            @foreach ($category as $item)
+            @if ($item->childrenCategories->count())
+                <option value="{{$item->id}}">--{{$item->name}}</option>
+            @else
+            <option value="{{$item->id}}">{{$item->name}}</option>
+            @endif
+            @endforeach
         </select>
       </div>
   </div>

@@ -23,7 +23,7 @@ cập nhật người dùng
     @endif
     <div class="card-body">
       <div class="form-group">
-        <label for="name">name</label>
+        <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên" value="{{$user->id}}">
       </div>
       <div class="form-group">
@@ -31,14 +31,30 @@ cập nhật người dùng
         <input type="text" name="email" class="form-control" id="email" placeholder="Nhập email" value="{{$user->email}}" readonly>
       </div>
       <div class="form-group">
-        <label for="password">password</label>
-        <input type="password" name="password" class="form-control" id="password" placeholder="Nhập password" value="">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Nhập password" value=""readonly >
       </div>
       <div class="form-group">
-        <label for="password_confirm">password_confirm</label>
-        <input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Nhập lại password" value="">
+        <label for="password_confirm">Password_confirm</label>
+        <input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Nhập lại password" value=""readonly >
       </div>
-
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ" value="{{$user->address}}">
+      </div>
+      <div class="form-group">
+        <label for="phone">Số dien thoai</label>
+        <input type="text" name="phone" class="form-control" id="phone" placeholder="Nhập số điện thoại" value="{{$user->sdt}}">
+      </div>
+      <div class="form-group">
+        <label for="sex">Giới tính</label>
+        <label class="radio-inline">
+          <input type="radio" name="sex" id="sex" value="0" @if($user->sex) checked @endif> Nam
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="sex" id="sex"  value="1"> nữ
+        </label>
+      </div>
       <div class="form-group">
         <label for="is_admin">is admin</label>
         <label class="radio-inline">
@@ -50,6 +66,6 @@ cập nhật người dùng
       </div>
     </div>
       <button type="submit" class="btn btn-primary">Cập nhật người dùng</button>
-      <button type="submit" class="btn btn-primary"><a href="{{route('admin.user.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.user.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection

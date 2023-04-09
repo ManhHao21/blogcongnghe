@@ -40,8 +40,12 @@ class UserController extends Controller
             'name'=> $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'is_admin' =>$request->is_admin
+            'is_admin' =>$request->is_admin,
+            'address' =>$request->address,
+            'sdt' =>$request->phone,
+            'sex' => $request->has('sex') ? 0: 1, 
         ]);
+        // dd($request);
         return redirect() ->route('admin.user.index')->with('msg', 'tạo người dùng thành công');
     }
 
@@ -61,7 +65,10 @@ class UserController extends Controller
         $user = User::find($id);
         $data = [
             'name' => $request->name,
-            'is_admin' =>$request->is_admin
+            'is_admin' =>$request->is_admin,
+            'address' =>$request->address,
+            'sdt' =>$request->phone,
+            'sex' => $request->sex, 
         ];
 
         if($request->password){

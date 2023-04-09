@@ -25,9 +25,12 @@
             <thead>
                 <tr>
                     <th width = '5%'>STT</th>
-                    <th width = '20%'>name</th>
-                    <th width = '20%'>email</th>
-                    <th width = '5%'>Is Admin</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>Địa chỉ</th>
+                    <th>So dien thoai</th>
+                    <th>giới tính</th>
+                    <th  >Is Admin</th>
                     <th  width = '15%'></th>
                 </tr>
             </thead>
@@ -37,8 +40,11 @@
                     <td>{{$key+1}}</td>
                     <td>{{$item->name}}</td>
                     <td>{{$item->email}}</td>
+                    <td>{{$item->address}}</td>
+                    
+                    <td>{{$item->sdt}}</td>
+                    <td>{{$item->sex == 1 ? 'Nam' : 'Nữ'}}</td>
                     <td>{{$item->is_admin}}</td>
-                  
                     <td>
                         <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" href="{{route('admin.user.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
                        <a href="{{ route('admin.user.edit', $item->id) }}" class="btn btn-danger btn-sm">sửa</a>

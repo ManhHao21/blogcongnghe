@@ -17,7 +17,7 @@
     <div class="card-body">
         <button type="button" class="btn btn-block btn-primary ml-3;"><a href="{{route('admin.post.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
         @if(session('msg'))
-        <div class="alert alert-success">
+        <div class="alert alert-success  ml-5 mt-5" >
             {{session('msg')}}
         </div>
         @endif
@@ -25,10 +25,13 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Category</th>
-                    <th>Highlight post</th>
+                    <th>Tiêu đề</th>
+                    <th>Hình ảnh</th>
+                    <th>Danh mục</th>
+                    <th>bài viết hay</th>
+                    <th>bài viết mới</th>
+                    <th>bài viết slide</th>
+                    <th>Số bình luận</th>
                     <th></th>
                 </tr>
             </thead>
@@ -43,7 +46,31 @@
                         @endif
                     </td>
                     <td>{{$item->categories->name}}</td>
-                    <td>{{$item->highlight_post  == 1 ? "x" : ''}}</td>
+                    <td>
+                        @if($item->highlight_post == 1)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
+    </div>
+                          </div>
+                        @endif
+                      </td>
+                      <td>
+                        @if($item->new_post == 1)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
+                            </div>
+                          </div>
+                        @endif
+                      </td>
+                      <td>
+                        @if($item->slide_post == 1)
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
+                            </div>
+                          </div>
+                        @endif
+                      </td>
+                      <td> {{ $item->comments->count() }} </td>
                     <td>
                         <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" href="{{route('admin.post.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
                        <a href="{{ route('admin.post.edit', $item->id) }}" class="btn btn-danger btn-sm">sửa</a>

@@ -32,6 +32,24 @@ Thêm người dùng
         <label for="password_confirm">password_confirm</label>
         <input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Nhập lại password" value="">
       </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ" value="">
+      </div>
+      <div class="form-group">
+        <label for="phone">so dien thoai</label>
+        <input type="text" name="phone" class="form-control" id="phone" placeholder="Nhập số điện thoại" value="">
+      </div>
+      <div class="form-group">
+        <label for="sex">Giới tính</label>
+        <label class="radio-inline">
+          <input type="radio" name="sex" id="sex" value="0"  checked> Nam
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="sex"  value="1" > Nữ
+        </label>
+      </div>
+      
 
       <div class="form-group">
         <label for="is_admin">is admin</label>

@@ -1,10 +1,7 @@
 
-
-
-
 @extends('layouts.backend');
-@section('head')
-  
+@section('danhsach')
+    Chỉnh sửa bài viết
 @endsection
 @section('content')
       @if(session('msg'))
@@ -16,7 +13,7 @@
     @csrf
     @method('put')
     @if(count($errors))
-    <div class="alert alert-danger">
+    <div class="alert alert-danger  ml-5 mt-5">
       @foreach($errors->all() as $err)
       {{$err}} <br>
       @endforeach
@@ -25,9 +22,12 @@
     <div class="card-body">
       <div class="form-group">
         <label>Category Parent</label>
-        <select class="form-control mb-3" name="parent_id">
+        <select class="form-control mb-3" name="id">
           <option value="">Parent</option>
-              {!! $htmlOption !!}
+          @foreach ($category as $item)
+          <option value="{{ $item->id }}" {{ $post->categories->id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+          @endforeach
+          
         </select>
       </div>
       <div class="form-group">
@@ -38,23 +38,25 @@
         <label for="description">description</label>
         <input type="text" name="description" class="form-control" id="description" placeholder="Nhập description" value="{{$post->description}}">
       </div>
+      <div class="form-group form-switch">
+        <input class="form-check-input" name = "new_post" type="checkbox" id="flexSwitchCheckDefault"  @if($post->new_post) checked @endif> 
+        <label for="new_post">Bài viết mới</label>
+       <br>
+       <input class="form-check-input" type="checkbox" name="highlight_post" id="flexSwitchCheckDefault"  @if($post->highlight_post) checked @endif>  
+       <label for="Highlight_Post">Bài viết hay</label>
 
-      <div class="form-group">
-        <label for="new_post">New Post</label>
-        <input type="checkbox" name="new_post" id="new_post"  @if($post->new_post) checked @endif>
-      </div>
-      <div class="form-group">
-        <label for="Highlight_Post">Highlight Post</label>
-        <input type="checkbox" name="highlight_post" id="Highlight_Post"  @if($post->highlight_post) checked @endif >
-      </div>
+       <br>
+       <input class="form-check-input" type="checkbox" name="slide_post" id="flexSwitchCheckDefault"  @if($post->slide_post) checked @endif>  
+       <label for="slide_post">Bài viết hay</label>
+     </div>
+      
       <div class="form-group">
         <label for="Image">Image</label>
         <input type="file" name="image" class="form-control" id="Image" accept="image/*" value="{{$post->image}}">
       </div>
       <div class="form-group">
         <label for="content">Content</label>
-        <textarea name="content" id="content" cols="30" rows="10" value = "{!!
-        $post->content!!}"></textarea>
+        <textarea name="content" id="content" cols="30" rows="10" value = "{!!$post->content!!}"></textarea>
       </div>
     </div>
 

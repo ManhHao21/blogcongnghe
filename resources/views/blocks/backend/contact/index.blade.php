@@ -29,6 +29,7 @@
                     <th>số điện thoại</th>
                     <th>nội dung</th>
                     <th>subject</th>
+                    <th>Tình trạng</th>
                     <th></th>
                 </tr>
             </thead>
@@ -41,9 +42,10 @@
                     <td>{{$item->phone}}</td>
                     <td>{{$item->subject}}</td>
                     <td>{{$item->message}}</td>
+                    <td>{!! $item->is_contact == 0 ? '<button type="button" class="btn btn-danger">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary">Dã duyệt</button>' !!}</td>
                     <td>
                         <a onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" href="{{route('admin.contact.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                        <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+                        <a href="{{route('admin.contact.show', $item->id)}}"  class="btn btn-secondary btn-sm" style="color: white; text-decoration: none;">Xem</a>
                     </td> 
                 </tr> 
                 @endforeach

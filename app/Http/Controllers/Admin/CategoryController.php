@@ -9,19 +9,20 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    private $category;
-    public function __construct(Categories $category)
-    {
-        $this->category = $category;
-    }
+    // private $category;
+    // public function __construct(Categories $category)
+    // {
+    //     $this->category = $category;
+    // }
     public function index(){
         $categories =  Categories::all();
         return view('blocks.backend.categories.index',compact('categories'));
     }
 
     public function create(){
-       $htmlOption =  $this->getCategory($parentid = '');
-        return view('blocks.backend.categories.create', compact('htmlOption'));
+    //    $htmlOption =  $this->getCategory($parentid = '');
+         $category = Categories::all();
+        return view('blocks.backend.categories.create', compact('category'));
     }
     
     
@@ -39,29 +40,24 @@ class CategoryController extends Controller
         while($checkSlug){
             $slug = $checkSlug->slug . Str::random(2);
         }
-        Categories::create([
-            'name' =>$request->name,
-            'slug' => Str::slug($request->name),
-            'parent_id' =>$request->parent_id
-        ]);
+        $category = new Categories();
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        if ($request->has('parent_id') && Categories::exists($request->parent_id)) {
+            $category->parent_id = $request->parent_id;
+        } else {
+            $category->parent_id = null;
+        }
+
+        
+        $category->save();
         return redirect()->route('admin.category.index')->with('msg', 'tạo danh mục thành công');
     }
 
     public function edit($id){
-        
-        $category = $this->category->find($id);
-        $htmlOption = $this->getCategory();
-        return view('blocks.backend.categories.edit', compact('category', 'htmlOption'));
+        $categories =  Categories::find($id);
+        return view('blocks.backend.categories.edit', compact('categories'));
     }
-
-    public function getCategory(){
-        $data =  $this->category-> all();
-        $recusive = new Recusive($data);
-
-       $htmlOption =  $recusive->categoryRecusive();
-       return $htmlOption;
-    }
-
     public function update(Request $request, $id){
         $this->validate($request,
          [
@@ -76,12 +72,18 @@ class CategoryController extends Controller
         while($checkSlug){
             $slug = $checkSlug->slug . Str::random(2);
         }
+        $category = new Categories();
         $category = Categories::find($id);
-        $category->update([
-            'name' =>$request->name,
-            'slug' => $slug,
-            'parent_id' => $request->parent_id
-        ]);
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+        if ($request->has('parent_id') && Categories::exists($request->parent_id)) {
+            $category->parent_id = $request->parent_id;
+        } else {
+            $category->parent_id = null;
+        }
+
+        
+        $category->save();
       
         return redirect()->route('admin.category.edit', $id)->with('msg', 'cập nhật danh mục thành công');
     }

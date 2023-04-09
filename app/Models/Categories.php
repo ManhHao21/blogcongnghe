@@ -29,7 +29,4 @@ class Categories extends Model
     {
         return $this->hasMany(categories::class, 'parent_id');
     }
-
-    
-
 }

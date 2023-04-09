@@ -20,7 +20,8 @@ class Post extends Model
         'new_post',
         'slug',
         'categories_id',
-        'highlight_post'
+        'highlight_post',
+        'slide_post'
     ];
 
     public function user(){

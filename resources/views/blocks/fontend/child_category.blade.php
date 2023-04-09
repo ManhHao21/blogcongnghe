@@ -1,15 +1,11 @@
-
-@if ($categoryP->childrenCategories->count())
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_2">
-        @foreach ($categoryP->childrenCategories as $categoryChil)
-        {{-- <div class="dropdown-item dropdown-submenu">
-            <a class="nav-link dropdown-toggle" href="{{route('category', $categoryP->slug)}}" id="dropdownMenuButton2" data-toggle="dropdown"
-                                aria-expanded="false">{{$categoryChil->name}} <span class="sr-only">(current)</span></a>
-        @include('blocks.fontend.child_category', ['categoryP' => $categoryChil])
-        </div> --}}
-        @endforeach
-    </div>
-@endif
+{{-- @if ($categoryChil->childrenCategories->count())
+<li class="dropdown"><a href="#"><span>{{$categoryChil->name}}</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+    <ul>
+    @foreach ($categoryP->childrenCategories as $categoryChil)
+    <li><a href="{{route('category', $categoryChil->slug)}}">{{$categoryChil->name}}</a></li>
+    @endforeach
+    </ul>
+@endif --}}
 
 
 
