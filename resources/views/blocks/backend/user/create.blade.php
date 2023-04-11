@@ -16,43 +16,43 @@ Thêm người dùng
   </div>
     @endif
     <div class="card-body">
-      <div class="form-group">
-        <label for="name">name</label>
+      <div class="form-group mb-3">
+        <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Nhập tên" value="">
       </div>
-      <div class="form-group">
-        <label for="email">email</label>
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
         <input type="text" name="email" class="form-control" id="email" placeholder="Nhập email" value="">
       </div>
-      <div class="form-group">
-        <label for="password">password</label>
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
         <input type="password" name="password" class="form-control" id="password" placeholder="Nhập password" value="">
       </div>
-      <div class="form-group">
-        <label for="password_confirm">password_confirm</label>
+      <div class="form-group mb-3">
+        <label for="password_confirm">Password_confirm</label>
         <input type="password" name="password_confirm" class="form-control" id="password_confirm" placeholder="Nhập lại password" value="">
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="address">Địa chỉ</label>
         <input type="text" name="address" class="form-control" id="address" placeholder="Nhập địa chỉ" value="">
       </div>
-      <div class="form-group">
-        <label for="phone">so dien thoai</label>
+      <div class="form-group mb-3">
+        <label for="phone">Số điện thoại</label>
         <input type="text" name="phone" class="form-control" id="phone" placeholder="Nhập số điện thoại" value="">
       </div>
-      <div class="form-group">
+      <div class="form-group mb-3">
         <label for="sex">Giới tính</label>
         <label class="radio-inline">
-          <input type="radio" name="sex" id="sex" value="0"  checked> Nam
+          <input type="radio" name="sex" id="sex" value="1"  checked> Nam
         </label>
         <label class="radio-inline">
-          <input type="radio" name="sex"  value="1" > Nữ
+          <input type="radio" name="sex"  value="0" checked> Nữ
         </label>
       </div>
       
 
       <div class="form-group">
-        <label for="is_admin">is admin</label>
+        <label for="is_admin">Is admin</label>
         <label class="radio-inline">
           <input type="radio" name="is_admin" id="is_admin" value="0" checked> User
         </label>

@@ -31,7 +31,11 @@ class CommentController extends Controller
     }
 
     public function delete($id){
+        $comments = Comment::find($id);
+        return view('blocks.backend.comments.delete',compact('comments') );
+    }
+    public function deletecomment($id){
         Comment::where('id', $id)->delete();
-        return redirect()->route('admin.comment.index')->with('msg', 'Xóa bình luận thành công');
+        return redirect()->route('admin.comment.index')->with('msg', 'Xóa danh mục thành công');
     }
 }

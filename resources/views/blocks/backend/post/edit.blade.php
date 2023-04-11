@@ -1,7 +1,7 @@
 
 @extends('layouts.backend');
 @section('danhsach')
-    Chỉnh sửa bài viết
+    Cập nhật bài viết
 @endsection
 @section('content')
       @if(session('msg'))

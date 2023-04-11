@@ -18,6 +18,7 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:users|email',
@@ -86,10 +87,15 @@ class UserController extends Controller
             ];
         }
         $user ->update($data);
-        return redirect() ->route('admin.user.edit', $user->id)->with('msg', 'cập nhật người dùng thành công');
+        return redirect() ->route('admin.user.index', $user->id)->with('msg', 'cập nhật người dùng thành công');
     }
 
     public function delete($id){
+        $user = User::where('id', $id)->first();
+        return view('blocks.backend.user.delete', compact('user'));
+    }
+
+    public function deleteUser($id){
         User::where('id', $id)->delete();
         return redirect()->route('admin.user.index')->with('msg', 'Xóa người dùng thành công');
     }

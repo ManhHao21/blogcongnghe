@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 @section('danhsach')
-    Danh sách bài viết
+    Xóa bài viết
 @endsection
 @section('title')
     Trang bài viết
@@ -37,18 +37,17 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach ($posts as $key=>$item)
                 <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$item->title}}</td>
+                    <td>{{$post->id}}</td>
+                    <td>{{$post->title}}</td>
                     <td>
-                        @if($item->image)
-                            <img src="{{ asset('image/post/' . $item->image) }}" width="50px" height="auto" alt="">
+                        @if($post->image)
+                            <img src="{{ asset('image/post/' . $post->image) }}" width="50px" height="auto" alt="">
                         @endif
                     </td>
-                    <td>{{$item->categories->name}}</td>
+                    <td>{{$post->categories->name}}</td>
                     <td>
-                        @if($item->highlight_post == 1)
+                        @if($post->highlight_post == 1)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
     </div>
@@ -56,7 +55,7 @@
                         @endif
                       </td>
                       <td>
-                        @if($item->new_post == 1)
+                        @if($post->new_post == 1)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
                             </div>
@@ -64,25 +63,24 @@
                         @endif
                       </td>
                       <td>
-                        @if($item->slide_post == 1)
+                        @if($post->slide_post == 1)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
                             </div>
                           </div>
                         @endif
                       </td>
-                      <td> {{ $item->comments->count() }} </td>
+                      <td> {{ $post->comments->count() }} </td>
                     <td>
-                        <a href="{{route('admin.post.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                       <a href="{{ route('admin.post.edit', $item->id) }}" class="btn btn-primary btn-sm">sửa</a>
+                        <form action="{{ route('admin.post.deletepost', $post->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
+                        <button type="submit" class="btn btn-secondary btn-sm"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
                     </td> 
                 </tr> 
-                @endforeach
             </tbody>
         </table>
-        {{-- {{$posts->links()}} --}}
-
-        {{ $posts->onEachSide(5)->links() }}
     </div>
 </div>
 @endsection

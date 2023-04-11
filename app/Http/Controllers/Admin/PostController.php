@@ -139,7 +139,11 @@ class PostController extends Controller
     }
 
     public function delete($id){
-        post::where('id', $id)->delete();
+        $post = Post::find($id);
+        return view('blocks.backend.post.delete',compact('post') );
+    }
+    public function deletepost($id){
+        Post::where('id', $id)->delete();
         return redirect()->route('admin.post.index')->with('msg', 'Xóa danh mục thành công');
     }
 

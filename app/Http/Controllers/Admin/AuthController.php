@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class AuthController extends Controller
             'email'=> $request->email,
             'password' => $request->password,
         ])){
+            $user = User::all();
             return redirect() ->route('admin.user.index');
         }
         return redirect() -> route('admin.login')->with('msg', 'Đăng nhập không thành công');

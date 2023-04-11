@@ -29,7 +29,7 @@
                 <div class="flex-grow-1 ms-2 ms-sm-3">
                   <div class="comment-meta d-flex align-items-baseline">
                     <h6 class="me-2">{{$item->name}}</h6>
-                    <span class="text-muted">{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span>
+                    <span class="text-muted">{{\Carbon\Carbon::parse($item->create_at)->format('H:i d-m-Y')}}</span>
                   </div>
                   <div class="comment-body">
                    {{$item->content}}

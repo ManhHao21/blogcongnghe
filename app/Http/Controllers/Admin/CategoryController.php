@@ -56,7 +56,8 @@ class CategoryController extends Controller
 
     public function edit($id){
         $categories =  Categories::find($id);
-        return view('blocks.backend.categories.edit', compact('categories'));
+        $category = Categories::all();
+        return view('blocks.backend.categories.edit', compact('category', 'categories'));
     }
     public function update(Request $request, $id){
         $this->validate($request,
@@ -87,8 +88,11 @@ class CategoryController extends Controller
       
         return redirect()->route('admin.category.edit', $id)->with('msg', 'cập nhật danh mục thành công');
     }
-
     public function delete($id){
+        $categories = Categories::find($id);
+        return view('blocks.backend.categories.delete',compact('categories') );
+    }
+    public function deletecategory($id){
         Categories::where('id', $id)->delete();
         return redirect()->route('admin.category.index')->with('msg', 'Xóa danh mục thành công');
     }

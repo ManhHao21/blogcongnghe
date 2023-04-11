@@ -4,7 +4,7 @@
   
 @endsection
 @section('danhsach')
-    Danh sách bình luận
+    Xóa bình luận
 @endsection
 @section('title')
     Quản lí bình luận
@@ -34,21 +34,20 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach ($comments as $key=>$item)
                 <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->content}}</td>
+                    <td>{{$comments->id}}</td>
+                    <td>{{$comments->name}}</td>
+                    <td>{{$comments->email}}</td>
+                    <td>{{$comments->content}}</td>
                     
-                    <td>{{$item->post ? $item->post->title : 'Không có bài đăng'}}</td>
+                    <td>{{$comments->post ? $comments->post->title : 'Không có bài đăng'}}</td>
                     <td>
-                        <a  href="{{route('admin.comment.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                     
+                        <form action="{{ route('admin.comment.deletepost', $comments->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
                     </td> 
-                </tr> 
-                @endforeach
-               
+                </tr>
             </tbody>
         </table>
     </div>

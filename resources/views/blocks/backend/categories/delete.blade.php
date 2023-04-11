@@ -4,7 +4,7 @@
   
 @endsection
 @section('danhsach')
-    Danh sách danh mục
+    Xóa danh mục
 @endsection
 @section('title')
     Danh mục
@@ -32,18 +32,18 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach ($categories as $key=>$item)
                 <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->parent_id}}</td>
-                    <td>
-                        <a  href="{{route('admin.category.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                       <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-primary btn-sm">sửa</a>
+                    <td>{{$categories->id}}</td>
+                    <td>{{$categories->name}}</td>
+                    <td>{{$categories->parent_id}}</td>
+                    <td class="">
+                        <form action="{{ route('admin.category.deletepost', $categories->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm">Xóa</button>
+                        </form>
+                        <button type="submit" class="btn btn-secondary btn-sm"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
                     </td> 
                 </tr> 
-                @endforeach
-               
             </tbody>
         </table>
     </div>

@@ -17,8 +17,12 @@ class ContactController extends Controller
         return view('blocks.backend.contact.show', compact('contacts'));
     }
     public function delete($id){
+        $Contacts = Contact::find($id);
+        return view('blocks.backend.contact.delete',compact('Contacts') );
+    }
+    public function deletecontact($id){
         Contact::where('id', $id)->delete();
-        return redirect()->route('admin.contact.index')->with('msg', 'Xóa liên hệ thành công');
+        return redirect()->route('admin.contact.index')->with('msg', 'Xóa danh mục thành công');
     }
     public function postShow($id) {
         $contact = Contact::findOrFail($id);

@@ -29,8 +29,8 @@ Cập nhật danh mục
           <label>Category Parent</label>
           <select class="form-control mb-3" name="parent_id">
             <option value="">Parent</option>
-            @foreach ($categories as $category)
-              <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @foreach ($category as $item)
+              <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
           </select>
         </div>

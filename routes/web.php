@@ -34,7 +34,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'checkLogin'])->name('check-login');
 });
-
 // ->middleware('admin.login')
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [homeController::class, 'index'])->name('index');
@@ -49,6 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('edit/{id}', [CategoryController::class, 'edit'])-> name('edit');
     Route::put('update/{id}', [CategoryController::class, 'update'])-> name('update');
     Route::get('delete/{id}', [CategoryController::class, 'delete'])-> name('delete');
+    Route::post('delete/{id}', [CategoryController::class, 'deletecategory'])-> name('deletepost');
     });
 
     Route::prefix('post')->name('post.')->group(function(){
@@ -58,6 +58,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('edit/{id}', [PostController::class, 'edit'])-> name('edit');
         Route::put('update/{id}', [PostController::class, 'update'])-> name('update');
         Route::get('delete/{id}', [PostController::class, 'delete'])-> name('delete');
+        Route::post('delete/{id}', [PostController::class, 'deletepost'])-> name('deletepost');
         });
 
         Route::prefix('user')->name('user.')->group(function(){
@@ -67,11 +68,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::get('edit/{id}', [UserController::class, 'edit'])-> name('edit');
             Route::put('update/{id}', [UserController::class, 'update'])-> name('update');
             Route::get('delete/{id}', [UserController::class, 'delete'])-> name('delete');
+            Route::post('delete/{id}', [UserController::class, 'deleteUser'])-> name('delete.post');
         });
 
         Route::prefix('contact')->name('contact.')->group(function(){
             Route::get('', [ContactController::class, 'index'])->name('index');
             Route::get('delete/{id}', [ContactController::class, 'delete'])-> name('delete');
+            Route::post('delete/{id}', [ContactController::class, 'deletecontact'])-> name('deletepost');
             Route::get('show/{id}', [ContactController::class, 'show'])-> name('show');
             Route::post('show/{id}', [ContactController::class, 'postShow'])-> name('postShow');
         });
@@ -79,6 +82,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::prefix('comment')->name('comment.')->group(function(){
             Route::get('', [CommentController::class, 'index'])->name('index');
             Route::get('delete/{id}', [CommentController::class, 'delete'])-> name('delete');
+            Route::post('delete/{id}', [CommentController::class, 'deletecomment'])-> name('deletepost');
         });
 
 
