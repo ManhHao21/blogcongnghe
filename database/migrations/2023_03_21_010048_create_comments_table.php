@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->text('content');
             $table->integer('post_id');
+            $table->integer('is_comment')->default(0);
             $table->timestamps();
     
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');

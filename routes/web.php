@@ -7,12 +7,14 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\homeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\RSSController;
 use App\Http\Controllers\web\AuthController as WebAuthController;
 use App\Http\Controllers\Web\WebController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [WebController::class, 'index'])->name('index');
+// Route::get('/rss', [RSSController::class, 'index']);
 
 Route::get('/category', [WebController::class, 'category'])->name('category');
 Route::get('/category/{id}', [WebController::class, 'category'])->name('category');
@@ -26,6 +28,7 @@ Route::post('contact', [WebController::class, 'sendContact'])->name('web.contact
 
 Route::get('login', [WebAuthController::class, 'formLogin'])->name('Auth.index');
 Route::post('login', [WebAuthController::class, 'login'])->name('Auth.login');
+Route::get('register', [WebAuthController::class, 'register'])->name('Auth.register');
 Route::get('logout', [WebAuthController::class, 'logout'])->name('Auth.logout');
 
 
@@ -33,10 +36,17 @@ Route::get('logout', [WebAuthController::class, 'logout'])->name('Auth.logout');
 Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('login', [AuthController::class, 'login'])->name('login');
     Route::post('login', [AuthController::class, 'checkLogin'])->name('check-login');
+
+    Route::get('register', [AuthController::class, 'register'])->name('Auth.register');
+    Route::post('register', [AuthController::class, 'checkRegister'])->name('Auth.check-register');
 });
-// ->middleware('admin.login')
-Route::prefix('admin')->name('admin.')->group(function(){
+
+Route::prefix('admin')->middleware('admin.login')->name('admin.')->group(function(){
     Route::get('/', [homeController::class, 'index'])->name('index');
+
+    Route::get('charAt', [homeController::class, 'charAt'])->name('charAt');
+
+    
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
@@ -53,12 +63,19 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::prefix('post')->name('post.')->group(function(){
         Route::get('', [PostController::class, 'index'])->name('index');
+        Route::get('charAt', [PostController::class, 'charAt'])->name('charAt');
         Route::get('create', [PostController::class, 'create'])->name('create');
         Route::post('store', [PostController::class, 'store'])->name('store');
         Route::get('edit/{id}', [PostController::class, 'edit'])-> name('edit');
+        
         Route::put('update/{id}', [PostController::class, 'update'])-> name('update');
         Route::get('delete/{id}', [PostController::class, 'delete'])-> name('delete');
         Route::post('delete/{id}', [PostController::class, 'deletepost'])-> name('deletepost');
+        Route::prefix('approve')->name('approve.')->group(function(){
+            Route::get('', [PostController::class, 'approve'])->name('index');
+            Route::get('show/{id}', [PostController::class, 'show'])-> name('show');
+            Route::post('show/{id}', [PostController::class, 'ShowPost'])-> name('ShowPost');
+        });
         });
 
         Route::prefix('user')->name('user.')->group(function(){
@@ -83,6 +100,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
             Route::get('', [CommentController::class, 'index'])->name('index');
             Route::get('delete/{id}', [CommentController::class, 'delete'])-> name('delete');
             Route::post('delete/{id}', [CommentController::class, 'deletecomment'])-> name('deletepost');
+            Route::get('show/{id}', [CommentController::class, 'show'])-> name('show');
+            Route::post('show/{id}', [CommentController::class, 'postShow'])-> name('postShow');
         });
 
 
@@ -94,5 +113,4 @@ Route::prefix('admin')->name('admin.')->group(function(){
         //     Route::post('update/{id}', [CommentController::class, 'postEdit'])-> name('post-edit');
         //     Route::get('delete/{id}', [CommentController::class, 'delete'])-> name('delete');
         // });
-   
 });

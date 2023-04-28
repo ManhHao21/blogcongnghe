@@ -46,7 +46,7 @@
                     <td>{{$user->sex == 1 ? 'Nam' : 'Nữ'}}</td>
                     <td> 
                         @if($user->is_admin == 1)
-                            <button type="button" class="btn btn-danger btn-sm">admin</button>
+                            <button type="button" class="btn btn-danger btn-sm">Admin</button>
                         @elseif ($user->is_admin == 0) 
                             <button type="button" class="btn btn-primary btn-sm">Nhân viên</button>
                         @endif

@@ -18,6 +18,7 @@ class Post extends Model
         'view_counts',
         'users_id',
         'new_post',
+        'is_active',
         'slug',
         'categories_id',
         'highlight_post',

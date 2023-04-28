@@ -1,4 +1,3 @@
-
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="{{route('index')}}" class="logo d-flex align-items-center">

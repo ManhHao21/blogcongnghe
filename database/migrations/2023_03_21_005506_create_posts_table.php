@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
             $table->string('image')->nullable();
             $table->integer('view_counts')->default(0);
             $table->unsignedBigInteger('users_id');
             $table->boolean('new_post')->default(0);
+            $table->boolean('is_active')->default(0);
             $table->string('slug');
             $table->unsignedBigInteger('categories_id');
             $table->boolean('highlight_post');

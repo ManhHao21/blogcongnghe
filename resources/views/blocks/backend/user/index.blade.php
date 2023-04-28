@@ -17,7 +17,8 @@
         <div class="alert alert-success">
             {{session('msg')}}
         </div>
-        @endif
+@endif
+
 <div class="card mb-4">
     <div class="card-body">
         <button type="button" class="btn btn-block btn-primary "><a href="{{route('admin.user.create')}}" style="color: white; text-decoration: none;">Thêm người dùng</a></button>
@@ -62,7 +63,8 @@
                 @endforeach
             </tbody>
         </table>
-
+        {{$user->links()}}
     </div>
 </div>
+
 @endsection

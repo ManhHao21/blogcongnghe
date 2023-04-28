@@ -38,14 +38,18 @@
                     <td>{{$item->name}}</td>
                     <td>{{$item->parent_id}}</td>
                     <td>
-                        <a  href="{{route('admin.category.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
+                        <a  href="{{route('admin.category.delete', $item->id)}}" class="btn btn-danger btn-sm hiden">Xóa</a>
                        <a href="{{ route('admin.category.edit', $item->id) }}" class="btn btn-primary btn-sm">sửa</a>
                     </td> 
                 </tr> 
                 @endforeach
-               
+                
+
             </tbody>
+            
         </table>
+        {{ $categories->links() }}
     </div>
 </div>
 @endsection
+

@@ -15,10 +15,11 @@ class Comment extends Model
         'phone',
         'content',
         'post_id', 
+        'is_comment'
     ];
 
     public function post(){
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(Post::class,'post_id', 'id');
     }
     
 }

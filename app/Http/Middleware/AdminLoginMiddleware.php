@@ -17,10 +17,10 @@ class AdminLoginMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::check()){
-            if(Auth::user()->is_admin == 1 ){
+            if(Auth::user()->is_admin == 1 || Auth::user()->is_admin == 0 ){
                 return $next($request);
             }
-            return redirect() ->route('admin.login')->with('msg','truy cập không hợp lệ');
+            return redirect() ->route('admin.charAt')->with('msg','truy cập không hợp lệ');
         }
         return redirect() ->route('admin.login')->with('msg','truy cập không hợp lệ');
     }

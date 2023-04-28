@@ -5,16 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
-        $user = User::all();
+        if (Auth::user()->is_admin == 1 ){
+            $user = User::paginate(3);
+        }
+        else {
+            return redirect() ->route('admin.post.index');
+        }
         return view('blocks.backend.user.index', compact('user'));
     }
 
     public function create(){
-        return view('blocks.backend.user.create');
+        if (Auth::user()->is_admin == 1 ){
+            return view('blocks.backend.user.create');
+        }
+        else if(Auth::user()->is_admin == 0){
+            return redirect() ->route('admin.post.index');
+        }
+       
     }
 
     public function store(Request $request){

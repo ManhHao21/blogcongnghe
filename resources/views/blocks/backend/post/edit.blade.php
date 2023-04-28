@@ -31,32 +31,32 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="tilte">tilte</label>
+        <label for="tilte">Tilte</label>
         <input type="text" name="title" class="form-control" id="tilte" placeholder="Nhập tiêu đề" value="{{$post->title}}">
       </div>
       <div class="form-group">
-        <label for="description">description</label>
+        <label for="description">Description</label>
         <input type="text" name="description" class="form-control" id="description" placeholder="Nhập description" value="{{$post->description}}">
       </div>
       <div class="form-group form-switch">
         <input class="form-check-input" name = "new_post" type="checkbox" id="flexSwitchCheckDefault"  @if($post->new_post) checked @endif> 
         <label for="new_post">Bài viết mới</label>
-       <br>
-       <input class="form-check-input" type="checkbox" name="highlight_post" id="flexSwitchCheckDefault"  @if($post->highlight_post) checked @endif>  
-       <label for="Highlight_Post">Bài viết hay</label>
+      <br>
+      <input class="form-check-input" type="checkbox" name="highlight_post" id="flexSwitchCheckDefault"  @if($post->highlight_post) checked @endif>  
+      <label for="Highlight_Post">Bài viết hay</label>
 
-       <br>
-       <input class="form-check-input" type="checkbox" name="slide_post" id="flexSwitchCheckDefault"  @if($post->slide_post) checked @endif>  
-       <label for="slide_post">Bài viết hay</label>
-     </div>
+      <br>
+      <input class="form-check-input" type="checkbox" name="slide_post" id="flexSwitchCheckDefault"  @if($post->slide_post) checked @endif>  
+      <label for="slide_post">Slide</label>
+    </div>
       
       <div class="form-group">
         <label for="Image">Image</label>
         <input type="file" name="image" class="form-control" id="Image" accept="image/*" value="{{$post->image}}">
       </div>
-      <div class="form-group">
+      <div class="form-group" readonly>
         <label for="content">Content</label>
-        <textarea name="content" id="content" cols="30" rows="10" value = "{!!$post->content!!}"></textarea>
+        <textarea name="content" id="content" cols="30" rows="10" value = "">{{ $post->content}}</textarea>
       </div>
     </div>
 

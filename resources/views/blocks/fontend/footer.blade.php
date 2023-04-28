@@ -4,21 +4,50 @@
     <div class="row g-5">
       <div class="col-lg-4">
         <h3 class="footer-heading">About ZenBlog</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem deleniti voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae officiis qui aliquid blanditiis omnis quae. Explicabo?</p>
-        <p><a href="about.html" class="footer-link-more">Learn More</a></p>
+        <p>Tin tức công nghệ là một lĩnh vực cực kỳ phát triển và đang được quan tâm rất nhiều trong thời đại số. Nó cung cấp thông tin về các sản phẩm công nghệ mới, các xu hướng tiên tiến, các sự kiện và cập nhật về các công nghệ hiện có. Các trang web và tờ báo công nghệ cung cấp thông tin về các sản phẩm mới nhất của các nhà sản xuất hàng đầu, bao gồm điện thoại thông minh, máy tính bảng, máy tính xách tay, máy ảnh số, TV thông minh, loa thông minh, đồng hồ thông minh, thiết bị gia đình thông minh và nhiều hơn nữa.</p>
       </div>
       <div class="col-6 col-lg-2">
-        <h3 class="footer-heading">Navigation</h3>
+        <h3 class="footer-heading">Tag</h3>
         <ul class="footer-links list-unstyled">
-          <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-          <li><a href="index.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-          <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
-          <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
-          <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+          @foreach ($categori as $item )
+            <li><a href="index.html"><i class="bi bi-chevron-right"></i>{{$item->name}}</a></li>
+          @endforeach
+          
         </ul>
       </div>
-      <div class="col-6 col-lg-2">
+      <div class="col-3">
+        <h3 class="footer-heading">Tin tức mới</h3>
+        <ul class="footer-links footer-blog-entry list-unstyled">
+          @foreach ($categoryNew as $item)
+            <li>
+            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
+              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
+              <div>
+                <div class="post-meta d-block"> <span class="mx-1">&bullet;</span> <span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
+                <span>{{$item->title}}</span>
+              </div>
+            </a>
+          </li>
+          @endforeach
+        </ul>
+      </div>
+      <div class="col-3">
+        <h3 class="footer-heading">Tin tức mới</h3>
+        <ul class="footer-links footer-blog-entry list-unstyled">
+          @foreach ($categoryPost as $item)
+            <li>
+            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
+              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
+              <div>
+                <div class="post-meta d-block"> <span class="mx-1">&bullet;</span> <span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
+                <span>{{$item->title}}</span>
+              </div>
+            </a>
+          </li>
+          @endforeach
+        </ul>
+      </div>
+      {{-- <div class="col-6 col-lg-2">
         <h3 class="footer-heading">Categories</h3>
         <ul class="footer-links list-unstyled">
           <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
@@ -30,20 +59,23 @@
           <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
           <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
         </ul>
-      </div>
-      <div class="col-lg-4">
+      </div> --}}
+      {{-- <div class="col-lg-3">
         <h3 class="footer-heading">Recent Posts</h3>
         <ul class="footer-links footer-blog-entry list-unstyled">
-          <li>
-            <a href="single-post.html" class="d-flex align-items-center">
-              <img src="assets/img/post-sq-1.jpg" alt="" class="img-fluid me-3">
+          @foreach ($categoryPost as $item )
+            <li>
+            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
+              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
               <div>
-                <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <span>5 Great Startup Tips for Female Founders</span>
+                <div class="post-meta d-block"></div><span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
+                <span>{{$item->title}}</span>
               </div>
             </a>
           </li>
-          <li>
+          @endforeach
+          
+          {{-- <li>
             <a href="single-post.html" class="d-flex align-items-center">
               <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
               <div>
@@ -69,18 +101,18 @@
                 <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
               </div>
             </a>
-          </li>
-        </ul>
-      </div>
+          </li> --}}
+        {{-- </ul>
+      </div> --}}
     </div>
-  </div>
+  {{-- </div> --}}
 </div>
 <div class="footer-legal">
   <div class="container">
     <div class="row justify-content-between">
       <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
         <div class="copyright">
-          © Copyright <strong><span>ZenBlog</span></strong>. All Rights Reserved
+          © Copyright <strong><span>Hblog</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>

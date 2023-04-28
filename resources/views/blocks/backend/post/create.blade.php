@@ -36,10 +36,10 @@
          <label for="new_post">Bài viết mới</label>
         <br>
         <input class="form-check-input" type="checkbox" name="highlight_post" id="flexSwitchCheckDefault" checked>  
-        <label for="Highlight_Post">Bài viết hay</label>
+        <label for="Highlight_Post">Bài viết hot</label>
         <br>
         <input class="form-check-input" type="checkbox" name="slide_post" id="flexSwitchCheckDefault" checked>  
-        <label for="slide_post">Bài viết slide</label>
+        <label for="slide_post">Slide</label>
       </div>
       <div class="form-group">
         <label for="Image">Hình ảnh</label>

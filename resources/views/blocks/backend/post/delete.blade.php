@@ -20,8 +20,6 @@
 @endif
 <div class="card mb-4">
     <div class="card-body">
-        <button type="button" class="btn btn-block btn-primary mb-3"><a href="{{route('admin.post.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
-        
         <table class="table table-striped table-bordered table-hover ">
             <thead>
                 <tr>
@@ -50,7 +48,6 @@
                         @if($post->highlight_post == 1)
                           <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked disabled>
-    </div>
                           </div>
                         @endif
                       </td>

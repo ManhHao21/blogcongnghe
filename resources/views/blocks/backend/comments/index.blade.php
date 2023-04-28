@@ -30,6 +30,7 @@
                     <th>nội dung</th>
                     {{-- <th>số bình luận</th> --}}
                     <th>bài viết</th>
+                    <th>Tình trạng</th>
                     <th></th>
                 </tr>
             </thead>
@@ -42,15 +43,17 @@
                     <td>{{$item->content}}</td>
                     
                     <td>{{$item->post ? $item->post->title : 'Không có bài đăng'}}</td>
+                    <td>{!! $item->is_comment == 0 ? '<button type="button" class="btn btn-danger">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary">Đã được duyệt</button>' !!}</td>
+                    <td>
                     <td>
                         <a  href="{{route('admin.comment.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                     
+                        <a href="{{route('admin.comment.show', $item->id)}}"  class="btn btn-secondary btn-sm" style="color: white; text-decoration: none;">Xem</a>
                     </td> 
                 </tr> 
                 @endforeach
-               
             </tbody>
         </table>
+        {{ $comments->links() }}
     </div>
 </div>
 @endsection
