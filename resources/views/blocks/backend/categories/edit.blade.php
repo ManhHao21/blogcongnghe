@@ -23,10 +23,10 @@ Cập nhật danh mục
     @endif
     <div class="card-body">
       <div class="form-group">
-        <label for="category">Tên Danh Mục</label>
+        <label for="category">Tên danh mục</label>
         <input type="text" name="name" class="form-control" id="category" value="{{$categories->name}}" placeholder="Nhập tên danh mục" value="">
         <div class="form-group">
-          <label>Category Parent</label>
+          <label>Danh mục</label>
           <select class="form-control mb-3" name="parent_id">
             <option value="">Parent</option>
             @foreach ($category as $item)

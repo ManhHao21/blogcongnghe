@@ -7,7 +7,7 @@
     Xóa danh mục
 @endsection
 @section('title')
-    Danh mục
+    Xóa danh mục
 @endsection
 @section('content')
 <div class="card mb-4">
@@ -20,8 +20,6 @@
 @endif
 <div class="card mb-4">
     <div class="card-body">
-        <button type="button" class="btn btn-block btn-primary ml-3 mb-3"><a href="{{route('admin.category.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
-        
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>

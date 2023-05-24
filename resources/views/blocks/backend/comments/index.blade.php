@@ -11,11 +11,10 @@
 @endsection
 @section('content')
 <div class="card mb-4">
-   
 </div>
 @if(session('msg'))
   <div class="alert alert-success  ml-5 mt-5" >
-      {{session('msg')}}
+        {{session('msg')}}
   </div>
 @endif
 <div class="card mb-4">
@@ -29,7 +28,7 @@
                     <th>email</th>
                     <th>nội dung</th>
                     {{-- <th>số bình luận</th> --}}
-                    <th>bài viết</th>
+                    <th style="width:20%">bài viết</th>
                     <th>Tình trạng</th>
                     <th></th>
                 </tr>
@@ -43,7 +42,7 @@
                     <td>{{$item->content}}</td>
                     
                     <td>{{$item->post ? $item->post->title : 'Không có bài đăng'}}</td>
-                    <td>{!! $item->is_comment == 0 ? '<button type="button" class="btn btn-danger">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary">Đã được duyệt</button>' !!}</td>
+                    <td>{!! $item->is_comment == 0 ? '<button type="button" class="btn btn-danger btn-sm">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary btn-sm">Đã được duyệt</button>' !!}</td>
                     <td>
                     <td>
                         <a  href="{{route('admin.comment.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>

@@ -28,7 +28,7 @@
                     <th>Địa chỉ</th>
                     <th>số điện thoại</th>
                     <th>nội dung</th>
-                    <th>subject</th>
+                    <th style="width:30%">subject</th>
                     <th>Tình trạng</th>
                     <th></th>
                 </tr>
@@ -42,7 +42,7 @@
                     <td>{{$item->phone}}</td>
                     <td>{{$item->subject}}</td>
                     <td>{{$item->message}}</td>
-                    <td>{!! $item->is_comment == 0 ? '<button type="button" class="btn btn-danger">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary">Đã duyệt</button>' !!}</td>
+                    <td>{!! $item->is_comment == 0 ? '<button type="button" class="btn btn-danger btn-sm">Chưa được duyệt</button>' : '<button type="button" class="btn btn-primary btn-sm">Đã duyệt</button>' !!}</td>
                     <td>
                         <a  href="{{route('admin.contact.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
                         <a href="{{route('admin.contact.show', $item->id)}}"  class="btn btn-secondary btn-sm" style="color: white; text-decoration: none;">Xem</a>

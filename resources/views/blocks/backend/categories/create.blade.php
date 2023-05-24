@@ -2,7 +2,7 @@
 @extends('layouts.backend');
 @section('head')
 @section('danhsach')
-Tạo danh mục
+Thêm mới danh mục
 @endsection
 @endsection
 @section('content')

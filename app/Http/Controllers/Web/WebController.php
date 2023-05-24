@@ -61,6 +61,8 @@ class WebController extends Controller
     }
 
     public function category($slug){
+        $categoryNew = Post::orderBy('created_at', 'desc')->where('highlight_post', 1)->take(3)->get();
+        $categoryPost = Post::orderBy('created_at', 'desc')->where('new_post', 1)->take(3)->get();
         $rss = file_get_contents('https://vnexpress.net/rss/gia-dinh.rss');
         $xml = simplexml_load_string($rss);
         // dd($xml);
@@ -80,6 +82,9 @@ class WebController extends Controller
         return view('blocks.fontend.category', compact('categories', 'category', 'posts', 'categori', 'new', 'hightlight', 'xml', 'xml1', 'xml2', 'categoryNew', 'categoryPost'));
     }
     public function post($slug){
+        $categoryNew = Post::orderBy('created_at', 'desc')->where('highlight_post', 1)->take(3)->get();
+        $categoryPost = Post::orderBy('created_at', 'desc')->where('new_post', 1)->take(3)->get();
+        
         $rss = file_get_contents('https://vnexpress.net/rss/gia-dinh.rss');
         $xml = simplexml_load_string($rss);
         // dd($xml);
@@ -97,7 +102,7 @@ class WebController extends Controller
                 'view_counts'=> $post->view_counts + 1
             ]);
             
-            return view('blocks.fontend.post', compact('post', 'categories', 'categori', 'xml', 'xml1', 'xml2'));
+            return view('blocks.fontend.post', compact('post', 'categories', 'categori', 'xml', 'xml1', 'xml2', 'categoryNew', 'categoryPost'));
         } else {
             return abort(404);
         }

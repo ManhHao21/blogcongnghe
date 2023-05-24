@@ -17,16 +17,16 @@
 @endif
 <div class="card mb-4">
     <div class="card-body">
-      <button type="button" class="btn btn-block btn-primary mb-3"><a href="{{route('admin.post.create')}}" style="color: white; text-decoration: none;">Thêm Danh Mục</a></button>
+      <button type="button" class="btn btn-block btn-primary mb-3"><a href="{{route('admin.post.create')}}" style="color: white; text-decoration: none;">Thêm bài viết</a></button>
       <table class="table table-striped table-bordered table-hover ">
         <thead>
           <tr>
             <th>STT</th>
-            <th>Tiêu đề</th>
-            <th>Hình ảnh</th>
-            <th>Danh mục</th>
-            <th>bài viết hot</th>
-            <th>bài viết mới</th>
+            <th style="width:20%">Tiêu đề</th>
+            <th style="width:5%">Hình ảnh</th>
+            <th style="width:7%">Danh mục</th>
+            <th style="width:7%">bài viết hot</th>
+            <th style="width:7%">bài viết mới</th>
             <th>Slide</th>
             <th>Số bình luận</th>
             <th>Độc giả</th>
