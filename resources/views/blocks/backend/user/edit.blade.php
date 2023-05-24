@@ -58,10 +58,10 @@ Cập nhật người dùng
       <div class="form-group mb-3">
         <label for="is_admin">Is admin</label>
         <label class="radio-inline">
-          <input type="radio" name="is_admin" id="is_admin" value="0" @if(!$user->is_admin) checked @endif > Nhân viên
+          <input type="radio" name="is_admin"  value="1" @if($user->is_admin) checked @endif > Admin
         </label>
         <label class="radio-inline">
-          <input type="radio" name="is_admin"  value="1" @if($user->is_admin) checked @endif > Admin
+          <input type="radio" name="is_admin" id="is_admin" value="0" @if(!$user->is_admin) checked @endif > Tác giả
         </label>
       </div>
     </div>

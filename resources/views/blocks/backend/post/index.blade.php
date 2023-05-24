@@ -5,10 +5,10 @@
 @endsection
 @section('content')
 @section('danhsach')
-    Danh sách bài viết
+    Quản lí bài viết
 @endsection
 @section('title')
-    Trang bài viết
+    Quản lí bài viết
 @endsection
 @if(session('msg'))
   <div class="alert alert-success  ml-5 mt-5" >

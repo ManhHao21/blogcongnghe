@@ -25,11 +25,11 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>tên người dùng</th>
-                    <th>email</th>
-                    <th>nội dung</th>
+                    <th>Tên người dùng</th>
+                    <th>Email</th>
+                    <th>Nội dung</th>
                     {{-- <th>số bình luận</th> --}}
-                    <th>bài viết</th>
+                    <th>Bài viết</th>
                     <th></th>
                 </tr>
             </thead>

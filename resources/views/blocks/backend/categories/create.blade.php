@@ -17,7 +17,7 @@ Thêm mới danh mục
     @endif
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Danh Mục</label>
+        <label for="menu">Tên danh mục</label>
         <input type="text" name="name" class="form-control" id="menu" placeholder="Nhập tên danh mục" value="">
       </div>
       <div class="form-group">
@@ -34,7 +34,7 @@ Thêm mới danh mục
         </select>
       </div>
   </div>
-      <button type="submit" class="btn btn-primary">Tạo danh mục</button>
+      <button type="submit" class="btn btn-primary">Thêm mới danh mục</button>
       <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection

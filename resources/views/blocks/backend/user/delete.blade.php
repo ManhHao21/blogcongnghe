@@ -20,8 +20,6 @@
         @endif
 <div class="card mb-4">
     <div class="card-body">
-        <button type="button" class="btn btn-block btn-primary "><a href="{{route('admin.user.create')}}" style="color: white; text-decoration: none;">Thêm người dùng</a></button>
-        
         <table class="table table-striped table-bordered table-hover mt-3">
             <thead>
                 <tr>
@@ -31,8 +29,8 @@
                     <th>Địa chỉ</th>
                     <th>So dien thoai</th>
                     <th>giới tính</th>
-                    <th  >Is Admin</th>
-                    <th  width = '15%'></th>
+                    <th>Is Admin</th>
+                    <th width = '15%'></th>
                 </tr>
             </thead>
             <tbody>
@@ -48,16 +46,16 @@
                         @if($user->is_admin == 1)
                             <button type="button" class="btn btn-danger btn-sm">Admin</button>
                         @elseif ($user->is_admin == 0) 
-                            <button type="button" class="btn btn-primary btn-sm">Nhân viên</button>
+                            <button type="button" class="btn btn-primary btn-sm">Tác giả</button>
                         @endif
                     </td>
-                    <td>
-                        <form action="{{ route('admin.user.delete.post', $user->id) }}" method="POST">
+                    <td class="d-flex justify-content-center w-70">
+                        <form action="{{ route('admin.user.delete.post', $user->id) }}" method="POST" class="w-50">
                             @csrf
-                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm">Xóa</button>
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm w-80 h-100">Xóa</button>
                         </form>
-                        <button type="submit" class="btn btn-secondary btn-sm"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
-                    </td> 
+                        <button type="submit" class="btn btn-secondary btn-sm w-80 h-100"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+                    </td>
                 </tr> 
             </tbody>
         </table>

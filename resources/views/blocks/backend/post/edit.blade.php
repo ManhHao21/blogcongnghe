@@ -60,7 +60,7 @@
       </div>
     </div>
 
-      <button type="submit" class="btn btn-primary">Cập nhật danh mục</button>
-      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+      <button type="submit" class="btn btn-primary">Cập nhật bài viết</button>
+      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.post.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
   </form>
 @endsection

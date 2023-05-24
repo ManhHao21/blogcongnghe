@@ -15,19 +15,19 @@ class CategoryController extends Controller
     //     $this->category = $category;
     // }
     public function index(){
-        if (Auth::user()->is_admin == 0 ){
-            // return view('errors.404');
-            return redirect()->route('admin.post.index');
-        }
+        // if (Auth::user()->is_admin == 0 ){
+        //     // return view('errors.404');
+        //     return redirect()->route('admin.post.index');
+        // }
         $categories =  Categories::paginate(3);
         return view('blocks.backend.categories.index',compact('categories'));
     }
 
     public function create(){
-        if (Auth::user()->is_admin == 0 ){
-            // return view('errors.404');
-            return redirect()->route('admin.post.index');
-        }
+        // if (Auth::user()->is_admin == 0 ){
+        //     // return view('errors.404');
+        //     return redirect()->route('admin.post.index');
+        // }
         $category = Categories::all();
         return view('blocks.backend.categories.create', compact('category'));
     }

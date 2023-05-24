@@ -8,14 +8,14 @@
     Duyệt bài viết
 @endsection
 @section('title')
-    Trang bài viết
+    Trang duyệt bài viết
 @endsection
 <div class="card mb-4">
-   
+    
 </div>
 @if(session('msg'))
   <div class="alert alert-success  ml-5 mt-5" >
-      {{session('msg')}}
+        {{session('msg')}}
   </div>
 @endif
 <div class="card mb-4">

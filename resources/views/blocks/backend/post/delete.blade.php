@@ -68,12 +68,12 @@
                         @endif
                       </td>
                       <td> {{ $post->comments->count() }} </td>
-                    <td>
+                    <td class="d-flex justify-content-center w-70">
                         <form action="{{ route('admin.post.deletepost', $post->id) }}" method="POST">
                             @csrf
-                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm">Xóa</button>
+                            <button type="submit" onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" class="btn btn-danger btn-sm h-100">Xóa</button>
                         </form>
-                        <button type="submit" class="btn btn-secondary btn-sm"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+                        <button type="submit" class="btn btn-secondary btn-sm  h-100"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
                     </td> 
                 </tr> 
             </tbody>

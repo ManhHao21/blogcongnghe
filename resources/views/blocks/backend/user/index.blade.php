@@ -32,34 +32,34 @@
                     <th>Địa chỉ</th>
                     <th>So dien thoai</th>
                     <th>giới tính</th>
-                    <th  >Is Admin</th>
-                    <th  width = '15%'></th>
+                    <th >Is Admin</th>
+                    <th width = '15%'></th>
                 </tr>
             </thead>
             <tbody>
-               @foreach ($user as $key=>$item)
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->address}}</td>
-                    
-                    <td>{{$item->sdt}}</td>
-                    <td>{{$item->sex == 1 ? 'Nam' : 'Nữ'}}</td>
-                    <td> 
-                        @if($item->is_admin == 1)
-                            <button type="button" class="btn btn-danger btn-sm">admin</button>
-                        @elseif ($item->is_admin == 0) 
-                            <button type="button" class="btn btn-primary btn-sm">Nhân viên</button>
-                        @endif
-                    </td>
-                    <td>
-                        {{-- {{route('admin.user.delete', $item->id)}} --}}
-                        {{-- onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" --}}
-                        <a  href="{{route('admin.user.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
-                       <a href="{{ route('admin.user.edit', $item->id) }}" class="btn btn-primary btn-sm">sửa</a>
-                    </td> 
-                </tr> 
+                @foreach ($user as $key=>$item)
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>{{$item->name}}</td>
+                        <td>{{$item->email}}</td>
+                        <td>{{$item->address}}</td>
+                        
+                        <td>{{$item->sdt}}</td>
+                        <td>{{$item->sex == 1 ? 'Nam' : 'Nữ'}}</td>
+                        <td> 
+                            @if($item->is_admin == 1)
+                                <button type="button" class="btn btn-danger btn-sm">admin</button>
+                            @elseif ($item->is_admin == 0) 
+                                <button type="button" class="btn btn-primary btn-sm">Tác giả</button>
+                            @endif
+                        </td>
+                        <td>
+                            {{-- {{route('admin.user.delete', $item->id)}} --}}
+                            {{-- onclick="return confirm('Bạn có chắc muốn xóa danh mục này không?')" --}}
+                            <a  href="{{route('admin.user.delete', $item->id)}}" class="btn btn-danger btn-sm">Xóa</a>
+                        <a href="{{ route('admin.user.edit', $item->id) }}" class="btn btn-primary btn-sm">sửa</a>
+                        </td> 
+                    </tr> 
                 @endforeach
             </tbody>
         </table>

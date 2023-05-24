@@ -92,7 +92,7 @@
                 <td>
                     <form method="POST" action="{{ route('admin.comment.postShow', $item->id) }}">
                         @csrf
-                        <button type="submit" class="btn btn-info btn-sm" onclick="return confirm('Bạn có chắc chắn muốn duyệt liên hệ này?')">Duyệt liên hệ</button>
+                        <button type="submit" class="btn btn-info btn-sm" onclick="return confirm('Bạn có chắc chắn muốn duyệt bình luận này?')">Duyệt bình luận</button>
                     </form>
                     
                 </td>

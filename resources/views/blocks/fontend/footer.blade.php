@@ -9,16 +9,16 @@
       <div class="col-6 col-lg-2">
         <h3 class="footer-heading">Tag</h3>
         <ul class="footer-links list-unstyled">
-          @foreach ($categori as $item )
+          {{-- @foreach ($categori as $item )
             <li><a href="index.html"><i class="bi bi-chevron-right"></i>{{$item->name}}</a></li>
-          @endforeach
+          @endforeach --}}
           
         </ul>
       </div>
       <div class="col-3">
         <h3 class="footer-heading">Tin tức mới</h3>
         <ul class="footer-links footer-blog-entry list-unstyled">
-          @foreach ($categoryNew as $item)
+          {{-- @foreach ($categoryNew as $item)
             <li>
             <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
               <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
@@ -28,13 +28,13 @@
               </div>
             </a>
           </li>
-          @endforeach
+          @endforeach --}}
         </ul>
       </div>
       <div class="col-3">
         <h3 class="footer-heading">Tin tức mới</h3>
         <ul class="footer-links footer-blog-entry list-unstyled">
-          @foreach ($categoryPost as $item)
+          {{-- @foreach ($categoryPost as $item)
             <li>
             <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
               <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
@@ -44,7 +44,7 @@
               </div>
             </a>
           </li>
-          @endforeach
+          @endforeach --}}
         </ul>
       </div>
       {{-- <div class="col-6 col-lg-2">

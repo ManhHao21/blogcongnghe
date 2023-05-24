@@ -51,8 +51,8 @@
       </div>
     </div>
 
-      <button type="submit" class="btn btn-primary">Tạo danh mục</button>
-      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.category.index')}}" style="color: white; text-decoration: none;">Trở về</a></button>
+      <button type="submit" class="btn btn-primary">Thêm mới bài viết</button>
+      <button type="submit" class="btn btn-secondary"><a href="{{route('admin.post.index')}}" style="color: white; text-decoration: none;">Quay lại</a></button>
   </form>
 @endsection
 
