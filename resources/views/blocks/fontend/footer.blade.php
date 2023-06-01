@@ -9,103 +9,46 @@
       <div class="col-6 col-lg-2">
         <h3 class="footer-heading">Tag</h3>
         <ul class="footer-links list-unstyled">
-          {{-- @foreach ($categori as $item )
+          @foreach ($categori as $item )
             <li><a href="index.html"><i class="bi bi-chevron-right"></i>{{$item->name}}</a></li>
-          @endforeach --}}
+          @endforeach
           
         </ul>
       </div>
       <div class="col-3">
         <h3 class="footer-heading">Tin tức mới</h3>
         <ul class="footer-links footer-blog-entry list-unstyled">
-          {{-- @foreach ($categoryNew as $item)
+          @foreach ($categoryNew as $item)
             <li>
             <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
               <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
               <div>
                 <div class="post-meta d-block"> <span class="mx-1">&bullet;</span> <span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
-                <span>{{$item->title}}</span>
-              </div>
-            </a>
-          </li>
-          @endforeach --}}
-        </ul>
-      </div>
-      <div class="col-3">
-        <h3 class="footer-heading">Tin tức mới</h3>
-        <ul class="footer-links footer-blog-entry list-unstyled">
-          {{-- @foreach ($categoryPost as $item)
-            <li>
-            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
-              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
-              <div>
-                <div class="post-meta d-block"> <span class="mx-1">&bullet;</span> <span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
-                <span>{{$item->title}}</span>
-              </div>
-            </a>
-          </li>
-          @endforeach --}}
-        </ul>
-      </div>
-      {{-- <div class="col-6 col-lg-2">
-        <h3 class="footer-heading">Categories</h3>
-        <ul class="footer-links list-unstyled">
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-          <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
-        </ul>
-      </div> --}}
-      {{-- <div class="col-lg-3">
-        <h3 class="footer-heading">Recent Posts</h3>
-        <ul class="footer-links footer-blog-entry list-unstyled">
-          @foreach ($categoryPost as $item )
-            <li>
-            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
-              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
-              <div>
-                <div class="post-meta d-block"></div><span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
                 <span>{{$item->title}}</span>
               </div>
             </a>
           </li>
           @endforeach
-          
-          {{-- <li>
-            <a href="single-post.html" class="d-flex align-items-center">
-              <img src="assets/img/post-sq-2.jpg" alt="" class="img-fluid me-3">
+        </ul>
+      </div>
+      <div class="col-3">
+        <h3 class="footer-heading">Tin tức mới</h3>
+        <ul class="footer-links footer-blog-entry list-unstyled">
+          @foreach ($categoryPost as $item)
+            <li>
+            <a href="{{route('post', $item->slug)}}" class="d-flex align-items-center">
+              <img src="{{$item->imageUrl()}}" alt="" class="img-fluid me-3">
               <div>
-                <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <span>What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</span>
+                <div class="post-meta d-block"> <span class="mx-1">&bullet;</span> <span>{{\Carbon\Carbon::parse($item->create_at)->format('d-m-Y')}}</span></div>
+                <span>{{$item->title}}</span>
               </div>
             </a>
           </li>
-          <li>
-            <a href="single-post.html" class="d-flex align-items-center">
-              <img src="assets/img/post-sq-3.jpg" alt="" class="img-fluid me-3">
-              <div>
-                <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <span>Life Insurance And Pregnancy: A Working Mom’s Guide</span>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="single-post.html" class="d-flex align-items-center">
-              <img src="assets/img/post-sq-4.jpg" alt="" class="img-fluid me-3">
-              <div>
-                <div class="post-meta d-block"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
-                <span>How to Avoid Distraction and Stay Focused During Video Calls?</span>
-              </div>
-            </a>
-          </li> --}}
-        {{-- </ul>
-      </div> --}}
+          @endforeach
+        </ul>
+      </div>
     </div>
-  {{-- </div> --}}
+  </div>
 </div>
 <div class="footer-legal">
   <div class="container">

@@ -12,33 +12,28 @@
             <h1 class="page-title">Liên hệ</h1>
           </div>
         </div>
-
         <div class="row gy-4">
-
           <div class="col-md-4">
             <div class="info-item">
               <i class="bi bi-geo-alt"></i>
               <h3>Địa chỉ: </h3>
               <address>182 đường Lê Duẩn - Thành phố vinh</address>
             </div>
-          </div><!-- End Info Item -->
-
+          </div>
           <div class="col-md-4">
             <div class="info-item info-item-borders">
               <i class="bi bi-phone"></i>
               <h3>Số điện thoại:</h3>
               <p><a href="">0989449675</a></p>
             </div>
-          </div><!-- End Info Item -->
-
+          </div>
           <div class="col-md-4">
             <div class="info-item">
               <i class="bi bi-envelope"></i>
               <h3>Email</h3>
               <p><a href="mailto:info@example.com">phanhaost@gmail.com</a></p>
             </div>
-          </div><!-- End Info Item -->
-
+          </div>
         </div>
         @if(session('msg'))
         <div class="alert alert-success  ml-5 mt-5" >
@@ -68,16 +63,12 @@
             <div class="form-group">
               <textarea class="form-control" name="message" rows="5" placeholder="Nội dung lien he" required></textarea>
             </div>
-          
             <button type="submit">Gửi liên hệ</button>
           </form>
-
       </div>
     </section>
-
   </main>
-@endsection
-
-@section('footer')
+  @section('footer')
     @include('blocks.fontend.footer')
+@endsection
 @endsection

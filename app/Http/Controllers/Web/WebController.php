@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use SimplePie\Category;
 use SimplePie\SimplePie;
 
 class WebController extends Controller
@@ -123,7 +124,11 @@ class WebController extends Controller
 
     public function contact(){
         $categories = Categories::whereNULL('parent_id')->get();
-        return view('blocks.fontend.contact', compact('categories'));
+        $categoryNew = Post::orderBy('created_at', 'desc')->where('highlight_post', 1)->take(3)->get();
+        $categoryPost = Post::orderBy('created_at', 'desc')->where('new_post', 1)->take(3)->get();
+        $categori = Categories::all();
+        $categori = Categories::all();
+        return view('blocks.fontend.contact', compact('categories', 'categori', 'categoryNew', 'categoryPost'));
     }
 
     public function sendContact(Request $request) {
